@@ -2,8 +2,8 @@ import { Client, Databases, ID } from "node-appwrite";
 
 export default async ({ req, res, log, error }) => {
   const client = new Client()
-    .setEndpoint(process.env.APPWRITE_FUNCTION_API_ENDPOINT)
-    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+    .setEndpoint("https://appwrite-orion.es-helios.cloud/v1")
+    .setProject("68992567001685a0dbcf")
     .setKey(req.headers["x-appwrite-key"]);
 
   const databases = new Databases(client);
@@ -11,8 +11,8 @@ export default async ({ req, res, log, error }) => {
     
   try {
     const res = await databases.createDocument(
-      "sample",
-      "68a47889001b14e0eb8c",
+      "689bb2b7000eea53f63d",
+      "689bb2ba003e6840ec95",
       ID.unique(),
       body
     );
