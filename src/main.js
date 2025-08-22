@@ -2,9 +2,14 @@ import { Client, Databases, ID } from "node-appwrite";
 
 export default async ({ req, res, log, error }) => {
   const client = new Client()
-    .setEndpoint("https://appwrite-orion.es-helios.cloud/v1")
-    .setProject("68992567001685a0dbcf")
-    .setKey(req.headers["x-appwrite-key"]);
+    .setEndpoint(process.env.APPWRITE_FUNCTION_API_ENDPOINT)
+    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+    .setKey(req.headers['x-appwrite-key']);
+
+  log(process.env.APPWRITE_FUNCTION_API_ENDPOINT);
+  log(process.env.APPWRITE_FUNCTION_PROJECT_ID);
+  log(process.env.DATABASE_ID);
+  log(process.env.COLLECTION_ID);
 
   const databases = new Databases(client);
   const body = req.bodyJson;
